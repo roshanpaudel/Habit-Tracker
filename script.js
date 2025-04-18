@@ -21,12 +21,12 @@ const enterList = () => {
                   <td>${item.taskInput}</td>
                   <td>${item.hoursInput}</td>
                   <td class="text-end">
-                    <button class="btn btn-danger">
-                      <i class="fa-solid fa-trash"></i>
-                    </button>
                     <button onclick="deleteOnCLick('${
                       item.id
-                    }')" class="btn btn-success">
+                    }')" class="btn btn-danger">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                    <button class="btn btn-success">
                       <i class="fa-solid fa-arrow-right"></i>
                     </button> </td></tr>`;
   });
