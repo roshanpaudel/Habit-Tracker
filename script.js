@@ -24,7 +24,9 @@ const enterList = () => {
                     <button class="btn btn-danger">
                       <i class="fa-solid fa-trash"></i>
                     </button>
-                    <button class="btn btn-success">
+                    <button onclick="deleteOnCLick('${
+                      item.id
+                    }')" class="btn btn-success">
                       <i class="fa-solid fa-arrow-right"></i>
                     </button> </td></tr>`;
   });
@@ -40,4 +42,10 @@ const uniqueIDGenerator = (length = 6) => {
   }
   console.log(uniqueID);
   return uniqueID;
+};
+
+const deleteOnCLick = (id) => {
+  taskList = taskList.filter((item) => item.id !== id);
+  console.log(taskList);
+  enterList();
 };
