@@ -7,6 +7,7 @@ const handleOnSubmit = (e) => {
   const obj = {
     taskInput,
     hoursInput,
+    id: uniqueIDGenerator(),
   };
   taskList.push(obj);
   enterList();
@@ -28,4 +29,15 @@ const enterList = () => {
                     </button> </td></tr>`;
   });
   listItems.innerHTML = str;
+};
+
+const uniqueIDGenerator = (length = 6) => {
+  const str = "qwertyuiopasdfghjklzxcvbnm1234567890";
+  let uniqueID = "";
+  for (let i = 0; i < length; i++) {
+    let strIndex = Math.floor(Math.random() * str.length);
+    uniqueID += indexOf(strIndex);
+  }
+  console.log(uniqueID);
+  return uniqueID;
 };
