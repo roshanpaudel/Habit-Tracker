@@ -19,6 +19,9 @@
         background: linear-gradient(pink, purple);
         min-height: 100vh;
       }
+      .table {
+        --bs-table-bg: transparent;
+      }
     </style>
   </head>
   <body>
@@ -54,6 +57,90 @@
         </form>
 
         <!-- tables  -->
+        <div class="row mt-5">
+          <div class="col">
+            <h2 class="text-center">Entry List</h2>
+            <hr />
+            <table class="table border table-hover">
+              <tbody>
+                <tr>
+                  <td scope="row">1</td>
+                  <td>Sleeping</td>
+                  <td>40hrs</td>
+                  <td class="text-end">
+                    <button class="btn btn-danger">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                    <button class="btn btn-success">
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td scope="row">1</td>
+                  <td>Sleeping</td>
+                  <td>40hrs</td>
+                  <td class="text-end">
+                    <button class="btn btn-danger">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                    <button class="btn btn-success">
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td scope="row">1</td>
+                  <td>Sleeping</td>
+                  <td>40hrs</td>
+                  <td class="text-end">
+                    <button class="btn btn-danger">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                    <button class="btn btn-success">
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col">
+            <h2 class="text-center">Habits to reduce</h2>
+            <hr />
+            <table class="table border table-hover">
+              <tbody>
+                <tr>
+                  <td scope="row">1</td>
+                  <td>Sleeping</td>
+                  <td>40hrs</td>
+                  <td class="text-end">
+                    <button class="btn btn-warning">
+                      <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <button class="btn btn-danger">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td scope="row">1</td>
+                  <td>Sleeping</td>
+                  <td>40hrs</td>
+                  <td class="text-end">
+                    <button class="btn btn-warning">
+                      <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <button class="btn btn-danger">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
         <!-- entry  -->
         <!-- bad habits  -->
       </div>
