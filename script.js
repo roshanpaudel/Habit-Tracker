@@ -36,7 +36,7 @@ const uniqueIDGenerator = (length = 6) => {
   let uniqueID = "";
   for (let i = 0; i < length; i++) {
     let strIndex = Math.floor(Math.random() * str.length);
-    uniqueID += indexOf(strIndex);
+    uniqueID += str[strIndex];
   }
   console.log(uniqueID);
   return uniqueID;
