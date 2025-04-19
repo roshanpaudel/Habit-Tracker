@@ -1,21 +1,30 @@
 let taskList = [];
+let allowedHrs = 24 * 7;
 
 const handleOnSubmit = (e) => {
   const newForm = new FormData(e);
   taskInput = newForm.get("task");
-  hoursInput = newForm.get("hours");
+  hoursInput = +newForm.get("hours");
   const obj = {
     taskInput,
     hoursInput,
     id: uniqueIDGenerator(),
     type: "entry",
   };
+
+  let currentHour = totalEnteredHours();
+  if (currentHour + hoursInput > allowedHrs) {
+    return alert(
+      `Sorry you cannot add more than ${allowedHrs - currentHour} hrs`
+    );
+  }
   taskList.push(obj);
   displayEnterList();
 };
 
 const displayEnterList = () => {
   const listItems = document.getElementById("entryList");
+  totalEnteredHours();
   let str = "";
   entryList = taskList.filter((item) => item.type == "entry");
   entryList.map((item, i) => {
@@ -61,6 +70,12 @@ const displayHabitList = () => {
                 </tr>`;
   });
   listItems.innerHTML = str;
+
+  displayHabitHrs = document.getElementById("habithrs");
+  displayHabitHrs.innerText = habitList.reduce(
+    (acc, item) => acc + item.hoursInput,
+    0
+  );
 };
 
 const uniqueIDGenerator = (length = 6) => {
@@ -92,4 +107,11 @@ const switchItems = (id, type) => {
 
   displayEnterList();
   displayHabitList();
+};
+
+const totalEnteredHours = () => {
+  displayEnteredHrs = document.getElementById("totalhrs");
+  let totalHrs = taskList.reduce((acc, item) => acc + item.hoursInput, 0);
+  displayEnteredHrs.innerText = totalHrs;
+  return totalHrs;
 };
