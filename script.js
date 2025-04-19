@@ -28,9 +28,9 @@ const displayEnterList = () => {
                     }')" class="btn btn-danger">
                       <i class="fa-solid fa-trash"></i>
                     </button>
-                    <button onclick="moveOnCLick('${
+                    <button onclick="switchItems('${
                       item.id
-                    }')" class="btn btn-success">
+                    }','habits')" class="btn btn-success">
                       <i class="fa-solid fa-arrow-right"></i>
                     </button> </td></tr>`;
   });
@@ -39,18 +39,20 @@ const displayEnterList = () => {
 const displayHabitList = () => {
   const listItems = document.getElementById("habitList");
   let str = "";
+  habitList = taskList.filter((item) => item.type === "habits");
+
   habitList.map((item, i) => {
     str += ` <tr>
                   <td scope="row">${i + 1}</td>
                   <td>${item.taskInput}</td>
                   <td>${item.hoursInput}</td>
                   <td class="text-end">
-                    <button onclick="moveToEntry('${
+                    <button onclick="switchItems('${
                       item.id
-                    }')" class="btn btn-warning">
+                    }','entry')" class="btn btn-warning">
                       <i class="fa-solid fa-arrow-left"></i>
                     </button>
-                    <button onclick="deleteHabit('${
+                    <button onclick="deleteOnCLick('${
                       item.id
                     }')" class="btn btn-danger">
                       <i class="fa-solid fa-trash"></i>
@@ -80,9 +82,14 @@ const deleteOnCLick = (id) => {
     displayHabitList();
   }
 };
-const switchItems = (id) => {
-  taskList.map((item, id) => {});
-  displayEnterList();
 
+const switchItems = (id, type) => {
+  taskList.map((item) => {
+    if (item.id === id) {
+      item.type = type;
+    }
+  });
+
+  displayEnterList();
   displayHabitList();
 };
