@@ -8,15 +8,17 @@ const handleOnSubmit = (e) => {
     taskInput,
     hoursInput,
     id: uniqueIDGenerator(),
+    type: "entry",
   };
   taskList.push(obj);
-  enterList();
+  displayEnterList();
 };
 
-const enterList = () => {
+const displayEnterList = () => {
   const listItems = document.getElementById("entryList");
   let str = "";
-  taskList.map((item, i) => {
+  entryList = taskList.filter((item) => item.type == "entry");
+  entryList.map((item, i) => {
     str += ` <tr><td scope="row">${i + 1}</td>
                   <td>${item.taskInput}</td>
                   <td>${item.hoursInput}</td>
@@ -26,9 +28,35 @@ const enterList = () => {
                     }')" class="btn btn-danger">
                       <i class="fa-solid fa-trash"></i>
                     </button>
-                    <button class="btn btn-success">
+                    <button onclick="moveOnCLick('${
+                      item.id
+                    }')" class="btn btn-success">
                       <i class="fa-solid fa-arrow-right"></i>
                     </button> </td></tr>`;
+  });
+  listItems.innerHTML = str;
+};
+const displayHabitList = () => {
+  const listItems = document.getElementById("habitList");
+  let str = "";
+  habitList.map((item, i) => {
+    str += ` <tr>
+                  <td scope="row">${i + 1}</td>
+                  <td>${item.taskInput}</td>
+                  <td>${item.hoursInput}</td>
+                  <td class="text-end">
+                    <button onclick="moveToEntry('${
+                      item.id
+                    }')" class="btn btn-warning">
+                      <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <button onclick="deleteHabit('${
+                      item.id
+                    }')" class="btn btn-danger">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>`;
   });
   listItems.innerHTML = str;
 };
@@ -45,7 +73,16 @@ const uniqueIDGenerator = (length = 6) => {
 };
 
 const deleteOnCLick = (id) => {
-  taskList = taskList.filter((item) => item.id !== id);
-  console.log(taskList);
-  enterList();
+  if (window.confirm("Are you sure you want to delete?")) {
+    taskList = taskList.filter((item) => item.id !== id);
+    console.log(taskList);
+    displayEnterList();
+    displayHabitList();
+  }
+};
+const switchItems = (id) => {
+  taskList.map((item, id) => {});
+  displayEnterList();
+
+  displayHabitList();
 };
